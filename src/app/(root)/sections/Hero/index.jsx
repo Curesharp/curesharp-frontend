@@ -11,7 +11,7 @@ const Hero = () => {
     <section>
       <Container>
         <div className="flex justify-center gap-20">
-          <div className="flex flex-col gap-4 max-w-[700px] pt-[100px]">
+          <div className="flex flex-col gap-4 max-w-[700px] pt-[60px]">
             <Title className="text-3xl font-semibold">
               No Brasil, a falta de acesso e informação é a{' '}
               <span className="underline  decoration-primary">principal</span>{' '}
