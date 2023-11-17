@@ -9,6 +9,13 @@ const EmailSection = () => {
   const { registerData, setRegisterData, setRegisterStep, registerStep } =
     useRegistration();
 
+  // Regex de validação de e-mail
+  const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+  const handleInputChange = (e) => {
+    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="p-7 border rounded">
       <div className="flex flex-col gap-6">
@@ -22,6 +29,7 @@ const EmailSection = () => {
         <form className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <Input
+              onChange={(e) => handleInputChange(e)}
               className="min-w-[342px]"
               type="email"
               name="email"
@@ -30,7 +38,10 @@ const EmailSection = () => {
           </div>
 
           <div className="flex flex-col gap-3">
-            <Button onClick={() => setRegisterStep(registerStep + 1)}>
+            <Button
+              disabled={!emailRegex.test(registerData.email)}
+              onClick={() => setRegisterStep(registerStep + 1)}
+            >
               Continuar
             </Button>
             <Button

@@ -1,20 +1,25 @@
-import Container from '@/components/layout/Container'
-import Button from '@/components/ui/Button'
-import Text from '@/components/ui/Text'
-import Title from '@/components/ui/Title'
-import Image from 'next/image'
-import React from 'react'
-import { PiArrowRightBold } from 'react-icons/pi'
+"use client";
+
+import Container from "@/components/layout/Container";
+import Button from "@/components/ui/Button";
+import Text from "@/components/ui/Text";
+import Title from "@/components/ui/Title";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import React from "react";
+import { PiArrowRightBold } from "react-icons/pi";
 
 const Hero = () => {
+  const router = useRouter();
+
   return (
-    <section>
+    <section className="bg-gradient-to-b from-white from-90% via-white to-slate-300  min-h-[calc(100vh-180px)] pb-[250px]">
       <Container>
         <div className="flex justify-center gap-20">
           <div className="flex flex-col gap-4 max-w-[700px] pt-[60px]">
             <Title className="text-3xl font-semibold">
-              No Brasil, a falta de acesso e informação é a{' '}
-              <span className="underline  decoration-primary">principal</span>{' '}
+              No Brasil, a falta de acesso e informação é a{" "}
+              <span className="underline  decoration-primary">principal</span>{" "}
               causa de morte de gestantes
               <span className="text-primary">.</span>
             </Title>
@@ -27,7 +32,12 @@ const Hero = () => {
             </Text>
 
             <div className="mt-10 max-w-[350px]">
-              <Button icon={PiArrowRightBold}>Criar conta</Button>
+              <Button
+                onClick={() => router.push("/register")}
+                icon={PiArrowRightBold}
+              >
+                Criar conta
+              </Button>
             </div>
           </div>
           <div className="flex relative justify-center items-center pr-20">
@@ -35,9 +45,9 @@ const Hero = () => {
               <Image
                 style={{
                   backgroundImage: `url(https://images.pexels.com/photos/618923/pexels-photo-618923.jpeg?auto=compress&cs=tinysrgb&w=1600)`,
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                  backgroundSize: 'cover',
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
                 }}
                 fill={true}
               />
@@ -47,7 +57,7 @@ const Hero = () => {
         </div>
       </Container>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

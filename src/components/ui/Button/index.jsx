@@ -21,7 +21,7 @@ const Button = ({
       className={twMerge(
         `group font-raleway outline-none w-full transition-all active:scale-[0.96] ${variantStyles} ${
           Icon ? "pl-4 pr-3 justify-between" : "px-8 justify-center"
-        } py-2 rounded flex  items-center gap-3`,
+        } disabled:bg-neutral-300 disabled:text-neutral-600 py-2 rounded flex  items-center gap-3`,
         className
       )}
     >

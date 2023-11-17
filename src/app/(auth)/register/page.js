@@ -1,12 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import NameSection from "../register/sections/NameSection";
 import useRegistration from "@/stores/register";
 import EmailSection from "./sections/EmailSection";
 
 const Register = () => {
-  const { registerStep } = useRegistration();
+  const { registerStep, setRegisterStep } = useRegistration();
+
+  useEffect(() => {
+    setRegisterStep(1);
+  }, []);
 
   // Escolher componente de acordo com número da step
   const renderStepComponent = () => {
