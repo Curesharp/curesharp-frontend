@@ -1,6 +1,7 @@
 import React from "react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
+import Title from "@/components/ui/Title";
 
 const ContactForm = () => {
   return (
@@ -14,7 +15,9 @@ const ContactForm = () => {
       </div>
 
       <div>
-        <label htmlFor="message">Message</label>
+        <label htmlFor="message">
+          <Title>Message</Title>
+        </label>
         <textarea
           className="h-32"
           id="message"
