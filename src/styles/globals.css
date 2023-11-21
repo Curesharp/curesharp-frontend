@@ -8,3 +8,11 @@ main {
   padding-top: 90px;
   min-height: calc(100vh - 90px);
 }
+
+form > div {
+  @apply flex flex-col gap-2;
+}
+
+input, textarea{
+  @apply shadow-md px-6 py-2 border;
+}
