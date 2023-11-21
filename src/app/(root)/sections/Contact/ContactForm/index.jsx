@@ -7,16 +7,26 @@ const ContactForm = () => {
   return (
     <form className="py-4 mt-4 border-t flex flex-col gap-5 font-inter">
       <div>
-        <Input className="bg-white " type="nome" name="nome" label="Nome" />
+        <Input
+          className="bg-white border-none"
+          type="nome"
+          name="nome"
+          label="Nome"
+        />
       </div>
 
       <div>
-        <Input className="bg-white " type="email" name="email" label="Email" />
+        <Input
+          className="bg-white border-none"
+          type="email"
+          name="email"
+          label="Email"
+        />
       </div>
 
       <div>
         <label htmlFor="message">
-          <Title>Message</Title>
+          <Title className="text-white">Message</Title>
         </label>
         <textarea
           className="h-32"
@@ -25,7 +35,9 @@ const ContactForm = () => {
         ></textarea>
       </div>
 
-      <Button variant="outline">Send</Button>
+      <Button className="font-bold" variant="neutral">
+        Send
+      </Button>
     </form>
   );
 };

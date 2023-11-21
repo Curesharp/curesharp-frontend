@@ -9,9 +9,11 @@ const Contact = () => {
     <section className="bg-primary border-y border-primary-400 w-full min-h-[300px]">
       <Container>
         <div className="p-4 max-w-3xl mx-auto">
-          <Title className="text-3xl font-bold">Contate-nos</Title>
+          <Title className="text-3xl font-bold text-white">Contate-nos</Title>
 
-          <Title>Por favor preencha o formulário abaixo</Title>
+          <Title className="text-white">
+            Por favor preencha o formulário abaixo
+          </Title>
 
           <ContactForm />
         </div>
