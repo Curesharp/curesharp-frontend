@@ -1,10 +1,11 @@
-import create from "zustand";
+import create from 'zustand'
 
 export const registrationInitialValue = {
-  nome: "",
-  sobrenome: "",
-  email: "",
-};
+  nome: '',
+  sobrenome: '',
+  email: '',
+  senha: '',
+}
 
 const useRegistration = create((set) => ({
   registerStep: 1,
@@ -13,6 +14,6 @@ const useRegistration = create((set) => ({
   registerData: registrationInitialValue,
   setRegisterData: (data) => set({ registerData: data }),
   clearRegisterData: () => set({ registrationData: null }),
-}));
+}))
 
-export default useRegistration;
+export default useRegistration

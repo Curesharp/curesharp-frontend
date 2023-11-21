@@ -1,9 +1,16 @@
-import create from "zustand";
+import create from 'zustand'
+
+export const userInitialData = {
+  nome: '',
+  email: '',
+  senha: '',
+  idUsuario: '',
+}
 
 const useUser = create((set) => ({
-  user: null,
+  user: userInitialData,
   setUser: (user) => set({ user }),
-  logout: () => set({ user: null }),
-}));
+  logout: () => set({ user: userInitialData }),
+}))
 
-export default useUser;
+export default useUser

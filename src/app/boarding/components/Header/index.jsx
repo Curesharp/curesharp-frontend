@@ -12,10 +12,10 @@ const Header = () => {
   const router = useRouter()
 
   return (
-    <header className="w-full h-[90px]">
+    <header className="absolute w-full h-[90px] z-20">
       <Container className="flex items-center justify-between py-4">
         <div className="w-[220px]">
-          <Brand />
+          <Brand variant="white" />
         </div>
 
         <div>
@@ -23,7 +23,9 @@ const Header = () => {
         </div>
 
         <div>
-          <Button onClick={() => router.push('/register')}>Começar</Button>
+          <Button variant="neutral" onClick={() => router.push('/register')}>
+            Começar
+          </Button>
         </div>
       </Container>
     </header>

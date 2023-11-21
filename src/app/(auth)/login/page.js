@@ -1,12 +1,11 @@
-import React from "react";
-import NameSection from "../register/sections/NameSection";
+import LoginSection from './sections/LoginSection'
 
 const Login = () => {
   return (
     <div className="flex justify-center pt-[100px]">
-      <NameSection />
+      <LoginSection />
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
