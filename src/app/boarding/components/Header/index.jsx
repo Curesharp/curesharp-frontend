@@ -7,15 +7,16 @@ import React from 'react'
 import HeaderNavigation from './components/HeaderNavigation'
 import { RootHeaderNavigation } from '@/constants/RootHeaderNavigation'
 import { useRouter } from 'next/navigation'
+import Profile from './components/Profile'
 
 const Header = () => {
   const router = useRouter()
 
   return (
-    <header className="w-full h-[90px]">
+    <header className="absolute w-full h-[90px] z-20">
       <Container className="flex items-center justify-between py-4">
         <div className="w-[220px]">
-          <Brand />
+          <Brand variant="white" />
         </div>
 
         <div>
@@ -23,7 +24,7 @@ const Header = () => {
         </div>
 
         <div>
-          <Button onClick={() => router.push('/register')}>Começar</Button>
+          <Profile />
         </div>
       </Container>
     </header>

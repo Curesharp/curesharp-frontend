@@ -1,6 +1,9 @@
 import { Inter } from 'next/font/google'
 import { Raleway } from 'next/font/google'
 import '@/styles/globals.css'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { AuthContextProvider } from '@/contexts/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 const raleway = Raleway({ subsets: ['latin'] })
@@ -13,7 +16,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={(inter.className, raleway.className)}>{children}</body>
+      <AuthContextProvider>
+        <body className={(inter.className, raleway.className)}>
+          <ToastContainer />
+          {children}
+        </body>
+      </AuthContextProvider>
     </html>
   )
 }
