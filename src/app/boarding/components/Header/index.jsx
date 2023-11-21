@@ -7,6 +7,7 @@ import React from 'react'
 import HeaderNavigation from './components/HeaderNavigation'
 import { RootHeaderNavigation } from '@/constants/RootHeaderNavigation'
 import { useRouter } from 'next/navigation'
+import Profile from './components/Profile'
 
 const Header = () => {
   const router = useRouter()
@@ -23,9 +24,7 @@ const Header = () => {
         </div>
 
         <div>
-          <Button variant="neutral" onClick={() => router.push('/register')}>
-            Começar
-          </Button>
+          <Profile />
         </div>
       </Container>
     </header>

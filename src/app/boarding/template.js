@@ -4,10 +4,10 @@ import PrivateRoute from '@/utils/auth/PrivateRoute'
 
 const Template = ({ children }) => {
   return (
-    <PrivateRoute>
+    <div>
       <Header />
       {children}
-    </PrivateRoute>
+    </div>
   )
 }
 

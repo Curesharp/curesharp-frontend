@@ -2,6 +2,7 @@
 
 import { api } from '@/lib/api'
 import useUser from '@/stores/user'
+import { useRouter } from 'next/navigation'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
@@ -9,31 +10,32 @@ const AuthContext = createContext()
 
 const AuthContextProvider = ({ children }) => {
   const { setUser } = useUser()
+  const router = useRouter()
 
   // submit button loading indicator
   const [isSubmitButtonLoading, setIsSubmitButtonLoading] = useState(false)
 
-  //   useEffect(() => {
-  //     const token = localStorage.getItem('curesharp.accessToken')
+  useEffect(() => {
+    const token = localStorage.getItem('curesharp.accessToken')
 
-  //     const getUser = async () => {
-  //       //   api.defaults.headers.common.Authorization = `Bearer ${token}`
+    const getUser = async () => {
+      api.defaults.headers.common.Authorization = `Bearer ${token}`
 
-  //       const userResponse = await api.get('/token/user', {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
+      const userResponse = await api.get('/token/user', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
 
-  //       const { user } = userResponse.data
+      const { user } = userResponse.data
 
-  //       setUser(user)
+      setUser(user)
 
-  //       console.log(user)
-  //     }
+      console.log(user)
+    }
 
-  //     if (token) {
-  //       getUser()
-  //     }
-  //   }, [])
+    if (token) {
+      getUser()
+    }
+  }, [])
 
   // user login
   const userLogin = async (formData) => {
@@ -52,9 +54,11 @@ const AuthContextProvider = ({ children }) => {
 
       const userResponse = await api.get('/token/user')
 
-      const { user } = userResponse.data
+      const user = userResponse.data
 
       console.log(user)
+
+      router.replace('/boarding')
 
       setUser(user)
     } catch (error) {
