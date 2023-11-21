@@ -2,16 +2,16 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import Text from '@/components/ui/Text'
 import Title from '@/components/ui/Title'
-import useRegistration from '@/stores/register'
-import React, { useState } from 'react'
-import AuthCard from '../../../components/AuthCard'
+import { useAuth } from '@/contexts/AuthContext'
 import { api } from '@/lib/api.js'
+import useRegistration from '@/stores/register'
+import { useState } from 'react'
 import { PiEye, PiEyeSlash } from 'react-icons/pi'
-import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
+import AuthCard from '../../../components/AuthCard'
 
 const PasswordSection = () => {
-  const router = useRouter()
+  const { userLogin } = useAuth()
   const { registerData, setRegisterData, setRegisterStep, registerStep } =
     useRegistration()
 
@@ -40,10 +40,11 @@ const PasswordSection = () => {
     }
 
     api
-      .post('/usuario', formData)
+      .post('/cadastro', formData)
       .then(() => {
-        router.push('/login')
         toast.success('Sua conta foi criada com sucesso!')
+
+        userLogin({ email: registerData.email, senha: registerData.senha })
 
         setIsSubmitButtonLoading(false)
       })
