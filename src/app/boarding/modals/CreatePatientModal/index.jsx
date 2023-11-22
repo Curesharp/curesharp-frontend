@@ -15,7 +15,6 @@ const CreatePatientModal = () => {
     rg: '',
     contato: Number(''),
     raca: '',
-    sexo: '',
   })
 
   const handleCreatePatient = () => {
@@ -25,7 +24,6 @@ const CreatePatientModal = () => {
       rg: patientFormData.rg,
       contato: patientFormData.contato,
       raca: patientFormData.raca,
-      sexo: patientFormData.sexo,
     }
 
     api.post('/gestante', formData)
@@ -57,14 +55,6 @@ const CreatePatientModal = () => {
             }
             defaultOption={raceMenu[0]}
             label="Etnia"
-          />
-          <SelectMenu
-            menu={genderMenu}
-            onChange={(item) =>
-              setPatientFormData({ ...patientFormData, sexo: item.id })
-            }
-            defaultOption={genderMenu[0]}
-            label="Sexo"
           />
         </div>
 

@@ -20,14 +20,3 @@ export const raceMenu = [
     id: 'amarela',
   },
 ]
-
-export const genderMenu = [
-  {
-    label: 'Masculino',
-    id: 'masculino',
-  },
-  {
-    label: 'Feminino',
-    id: 'feminino',
-  },
-]
