@@ -15,6 +15,7 @@ const HeaderNavigation = ({ menu }) => {
               item.href === pathname && 'after:!block'
             } transition-all font-raleway relative after:absolute after:left-0 after:mt-1 after:animate-scale-in after:hidden hover:after:block after:bg-primary after:w-full after:h-[2px] border-primary active:scale-[0.96] cursor-pointer text-neutral-700 py-1 hover:bg-neutral-50/10 rounded`}
           >
+          
             {item.label}
           </li>
         ))}

@@ -1,9 +1,13 @@
 'use client'
 
+import Button from '@/components/ui/Button'
+import { RootHeaderNavigation } from '@/constants/RootHeaderNavigation'
 import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 const HeaderNavigation = ({ menu }) => {
   const pathname = usePathname()
+  const router = useRouter()
 
   return (
     <nav>
@@ -14,6 +18,7 @@ const HeaderNavigation = ({ menu }) => {
             className={`${
               item.href === pathname && 'after:!block'
             } transition-all px-2 font-raleway relative after:absolute after:left-0 after:mt-1 after:animate-scale-in after:hidden hover:after:block after:bg-primary after:w-full after:h-[2px] border-primary active:scale-[0.96] cursor-pointer text-white py-1 hover:bg-neutral-50/10 rounded`}
+            
           >
             {item.label}
           </li>
