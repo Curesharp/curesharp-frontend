@@ -1,5 +1,5 @@
-import React from "react";
-import { twMerge } from "tailwind-merge";
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const Input = ({ label, onChange, className, ...props }) => {
   return (
@@ -8,8 +8,8 @@ const Input = ({ label, onChange, className, ...props }) => {
         {...props}
         onChange={onChange}
         className={twMerge(
-          "block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded border appearance-none dark:text-black dark:border-gray-600 dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer",
-          className
+          'block px-2.5 pb-2.5 pt-4 w-full text-lg text-neutral-600 bg-transparent rounded border appearance-none dark:focus:border-primary focus:outline-none focus:ring-0 focus:border-primary peer',
+          className,
         )}
         id="floating_outlined"
         placeholder=" "
@@ -21,7 +21,7 @@ const Input = ({ label, onChange, className, ...props }) => {
         {label}
       </label>
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

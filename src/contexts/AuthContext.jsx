@@ -2,6 +2,7 @@
 
 import { api } from '@/lib/api'
 import useUser from '@/stores/user'
+import { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -13,7 +14,7 @@ const AuthContextProvider = ({ children }) => {
   const router = useRouter()
 
   // submit button loading indicator
-  const [isSubmitButtonLoading, setIsSubmitButtonLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     const token = localStorage.getItem('curesharp.accessToken')
@@ -21,11 +22,9 @@ const AuthContextProvider = ({ children }) => {
     const getUser = async () => {
       api.defaults.headers.common.Authorization = `Bearer ${token}`
 
-      const userResponse = await api.get('/token/user', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const userResponse = await api.get('/token/user')
 
-      const { user } = userResponse.data
+      const user = userResponse.data
 
       setUser(user)
 
@@ -41,7 +40,7 @@ const AuthContextProvider = ({ children }) => {
   const userLogin = async (formData) => {
     console.log('hasdhuasdhu')
 
-    setIsSubmitButtonLoading(true)
+    setIsLoading(true)
 
     try {
       const loginResponse = await api.post('/login', formData)
@@ -62,28 +61,22 @@ const AuthContextProvider = ({ children }) => {
 
       setUser(user)
     } catch (error) {
-      if (error.response) {
-        // O servidor respondeu com um status de erro
-        console.error('Erro na resposta do servidor:', error.response.data)
-      } else if (error.request) {
-        // A requisição foi feita, mas não houve resposta
-        console.error('Sem resposta do servidor:', error.request)
-      } else {
-        // Algo aconteceu durante a configuração da requisição que causou o erro
-        console.error(
-          'Erro durante a configuração da requisição:',
-          error.message,
-        )
+      if (error instanceof AxiosError) {
+        if (error.response) {
+          toast.error(error.response.data.erro)
+        } else {
+          toast.error('Algo deu errado, tente novamente mais tarde!')
+        }
       }
 
       setUser(null)
     } finally {
-      setIsSubmitButtonLoading(false)
+      setIsLoading(false)
     }
   }
 
   return (
-    <AuthContext.Provider value={{ isSubmitButtonLoading, userLogin }}>
+    <AuthContext.Provider value={{ isLoading, userLogin }}>
       {children}
     </AuthContext.Provider>
   )

@@ -4,6 +4,7 @@ import '@/styles/globals.css'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { AuthContextProvider } from '@/contexts/AuthContext'
+import ModalProvider from '@/components/layout/ModalWrapper/components/ModalProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 const raleway = Raleway({ subsets: ['latin'] })
@@ -17,10 +18,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <AuthContextProvider>
-        <body className={(inter.className, raleway.className)}>
-          <ToastContainer />
-          {children}
-        </body>
+        <ModalProvider>
+          <body className={(inter.className, raleway.className)}>
+            <ToastContainer />
+            {children}
+          </body>
+        </ModalProvider>
       </AuthContextProvider>
     </html>
   )

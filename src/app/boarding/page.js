@@ -10,9 +10,13 @@ import Button from '@/components/ui/Button'
 import EmptySection from './components/EmptySection'
 import Card from '@/components/shared/Card'
 import useUser from '@/stores/user'
+import HiPlus from 'react-icons/hi'
+import useModal from '@/stores/modal'
+import CreatePatientModal from './modals/CreatePatientModal'
 
 const Boarding = () => {
   const { user } = useUser()
+  const { setModal } = useModal()
 
   return (
     <main className="bg-neutral-100 min-h-screen pb-[200px]">
@@ -26,16 +30,22 @@ const Boarding = () => {
         </Title>
 
         <div className="flex flex-col gap-8">
-          <Section title="Você ainda não fez a sua consulta">
+          <Section title="Você ainda não cadastrou nenhum paciente.">
             <div className="flex flex-col gap-8">
-              <Text>
-                A consulta de risco da Cure Sharp é muito importante para poder
-                se prevenir de possíveis complicações durante o processo da
-                gestação.
-              </Text>
+              <Text>Você poderá ver todos os seus pacientes aqui.</Text>
 
               <div className="max-w-[300px]">
-                <Button>Fazer consulta</Button>
+                <Button
+                  onClick={() =>
+                    setModal({
+                      title: 'Adicionar paciente',
+                      content: <CreatePatientModal />,
+                    })
+                  }
+                  icon={HiPlus}
+                >
+                  Adicionar paciente
+                </Button>
               </div>
             </div>
           </Section>

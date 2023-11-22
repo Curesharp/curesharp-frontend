@@ -12,7 +12,7 @@ import { useState } from 'react'
 
 const LoginSection = () => {
   const router = useRouter()
-  const { userLogin, isSubmitButtonLoading } = useAuth()
+  const { userLogin, isLoading } = useAuth()
 
   const [loginData, setLoginData] = useState({
     email: '',
@@ -55,7 +55,7 @@ const LoginSection = () => {
 
         <div className="flex flex-col gap-3">
           <Button
-            loading={isSubmitButtonLoading}
+            isLoading={isLoading}
             disabled={!loginData.email || !loginData.senha}
             onClick={(e) => {
               e.preventDefault()
