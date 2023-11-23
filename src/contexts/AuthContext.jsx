@@ -38,8 +38,6 @@ const AuthContextProvider = ({ children }) => {
 
   // user login
   const userLogin = async (formData) => {
-    console.log('hasdhuasdhu')
-
     setIsLoading(true)
 
     try {

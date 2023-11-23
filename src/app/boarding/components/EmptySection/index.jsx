@@ -3,7 +3,7 @@ import React from 'react'
 
 const EmptySection = ({ title, children }) => {
   return (
-    <section>
+    <section className="pt-20">
       <header className="mb-6">
         <Title className="text-2xl">{title}</Title>
       </header>

@@ -3,7 +3,7 @@ export const getVariant = (variant) => {
 
   switch (variant) {
     case 'neutral':
-      className = 'bg-white hover:bg-neutral-50 text-neutral-700'
+      className = 'bg-white hover:bg-primary-50/10 text-primary-500'
 
       break
     case 'outline':

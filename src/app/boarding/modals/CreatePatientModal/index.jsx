@@ -1,13 +1,15 @@
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 import SelectMenu from '@/components/ui/SelectMenu'
-import React, { useState } from 'react'
-import { genderMenu, raceMenu } from './data/menuData'
 import { api } from '@/lib/api'
 import useUser from '@/stores/user'
+import { useState } from 'react'
+import { raceMenu } from './data/menuData'
+import useModal from '@/stores/modal'
 
 const CreatePatientModal = () => {
   const { user } = useUser()
+  const { setModal } = useModal()
 
   const [patientFormData, setPatientFormData] = useState({
     nome: '',
@@ -23,10 +25,12 @@ const CreatePatientModal = () => {
       nome: patientFormData.nome + ' ' + patientFormData.sobrenome,
       rg: patientFormData.rg,
       contato: patientFormData.contato,
-      raca: patientFormData.raca,
+      raca: patientFormData.raca.toUpperCase(),
     }
 
-    api.post('/gestante', formData)
+    api.post('/gestante', formData).then(() => {
+      setModal(undefined)
+    })
   }
 
   const handleInputChange = (e) => {
@@ -58,7 +62,7 @@ const CreatePatientModal = () => {
           />
         </div>
 
-        <div>
+        <div className="flex flex-col gap-4">
           <Button onClick={handleCreatePatient}>Adicionar</Button>
           <Button variant="outline">Limpar</Button>
         </div>
