@@ -1,11 +1,11 @@
-import React from "react";
-import Input from "@/components/ui/Input";
-import Button from "@/components/ui/Button";
-import Title from "@/components/ui/Title";
+import React from 'react'
+import Input from '@/components/ui/Input'
+import Button from '@/components/ui/Button'
+import Title from '@/components/ui/Title'
 
 const ContactForm = () => {
   return (
-    <form className="py-4 mt-4 border-t flex flex-col gap-5 font-inter">
+    <form className="py-4 mt-4 border-t border-primary-50 flex flex-col gap-5 font-inter">
       <div>
         <Input
           className="bg-white border-none"
@@ -26,20 +26,20 @@ const ContactForm = () => {
 
       <div>
         <label htmlFor="message">
-          <Title className="text-white">Message</Title>
+          <Title className="text-white">Mensagem</Title>
         </label>
         <textarea
-          className="h-32"
+          className="h-32 p-3 rounded"
           id="message"
-          placeholder="type your message here"
+          placeholder="Escreva sua mensagem aqui"
         ></textarea>
       </div>
 
       <Button className="font-bold" variant="neutral">
-        Send
+        Enviar
       </Button>
     </form>
-  );
-};
+  )
+}
 
-export default ContactForm;
+export default ContactForm

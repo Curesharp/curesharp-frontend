@@ -38,8 +38,6 @@ const AuthContextProvider = ({ children }) => {
 
   // user login
   const userLogin = async (formData) => {
-    console.log('hasdhuasdhu')
-
     setIsLoading(true)
 
     try {
@@ -54,8 +52,6 @@ const AuthContextProvider = ({ children }) => {
       const userResponse = await api.get('/token/user')
 
       const user = userResponse.data
-
-      console.log(user)
 
       router.replace('/boarding')
 
