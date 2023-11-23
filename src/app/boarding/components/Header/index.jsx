@@ -19,9 +19,9 @@ const Header = () => {
           <Brand variant="white" />
         </div>
 
-        <div>
+        {/* <div>
           <HeaderNavigation menu={RootHeaderNavigation} />
-        </div>
+        </div> */}
 
         <div>
           <Profile />

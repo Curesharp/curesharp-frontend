@@ -2,7 +2,7 @@
 
 import Container from '@/components/layout/Container'
 import Divider from '@/components/layout/Divider'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Section from './components/Section'
 import Title from '@/components/ui/Title'
 import Text from '@/components/ui/Text'
@@ -13,10 +13,34 @@ import useUser from '@/stores/user'
 import HiPlus from 'react-icons/hi'
 import useModal from '@/stores/modal'
 import CreatePatientModal from './modals/CreatePatientModal'
+import { api } from '@/lib/api'
+import PatientsList from './components/PatientsList'
+import LoadingDots from '@/components/shared/LoadingDots'
 
 const Boarding = () => {
   const { user } = useUser()
   const { setModal } = useModal()
+
+  const [patients, setPatients] = useState([])
+
+  // patients loading state
+  const [isPatientsLoading, setIsPatientsLoading] = useState(true)
+
+  const fetchPatients = () => {
+    setIsPatientsLoading(true)
+
+    api.get(`/gestante`).then((response) => {
+      setPatients(response.data)
+
+      setIsPatientsLoading(false)
+    })
+  }
+
+  useEffect(() => {
+    fetchPatients()
+
+    console.log(patients)
+  }, [])
 
   return (
     <main className="bg-neutral-100 min-h-screen pb-[200px]">
@@ -30,24 +54,59 @@ const Boarding = () => {
         </Title>
 
         <div className="flex flex-col gap-8">
-          <Section title="Você ainda não cadastrou nenhum paciente.">
-            <div className="flex flex-col gap-8">
-              <Text>Você poderá ver todos os seus pacientes aqui.</Text>
+          <Section
+            header={
+              !isPatientsLoading && (
+                <div className="max-w-[300px]">
+                  <Button
+                    onClick={() =>
+                      setModal({
+                        title: 'Adicionar paciente',
+                        content: <CreatePatientModal />,
+                      })
+                    }
+                    icon={HiPlus}
+                  >
+                    Adicionar paciente
+                  </Button>
+                </div>
+              )
+            }
+            title={
+              isPatientsLoading
+                ? ''
+                : patients.length > 0
+                ? 'Pacientes'
+                : 'Você ainda não tem nenhum paciente'
+            }
+          >
+            {isPatientsLoading ? (
+              <LoadingDots variant="primary" />
+            ) : (
+              <div className="mt-8 flex flex-col gap-8">
+                {!patients.length && (
+                  <>
+                    <Text>Você poderá ver todos os seus pacientes aqui.</Text>
 
-              <div className="max-w-[300px]">
-                <Button
-                  onClick={() =>
-                    setModal({
-                      title: 'Adicionar paciente',
-                      content: <CreatePatientModal />,
-                    })
-                  }
-                  icon={HiPlus}
-                >
-                  Adicionar paciente
-                </Button>
+                    <div className="max-w-[300px]">
+                      <Button
+                        onClick={() =>
+                          setModal({
+                            title: 'Adicionar paciente',
+                            content: <CreatePatientModal />,
+                          })
+                        }
+                        icon={HiPlus}
+                      >
+                        Adicionar paciente
+                      </Button>
+                    </div>
+                  </>
+                )}
+
+                <PatientsList patients={patients} />
               </div>
-            </div>
+            )}
           </Section>
 
           <EmptySection title="Alimentação saudável na gravidez">
