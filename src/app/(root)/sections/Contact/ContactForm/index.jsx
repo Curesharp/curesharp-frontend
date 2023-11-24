@@ -1,7 +1,7 @@
-import React from 'react'
-import Input from '@/components/ui/Input'
-import Button from '@/components/ui/Button'
-import Title from '@/components/ui/Title'
+import React from "react";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
+import Title from "@/components/ui/Title";
 
 const ContactForm = () => {
   return (
@@ -39,7 +39,7 @@ const ContactForm = () => {
         Enviar
       </Button>
     </form>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;
