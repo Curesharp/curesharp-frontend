@@ -7,7 +7,6 @@ import Image from "next/image";
 import React from "react";
 import { PiArrowRightBold } from "react-icons/pi";
 import Card from "./Card";
-import Partners from "@/app/(root)/sections/Partners";
 
 const Hero = () => {
   return (
