@@ -29,7 +29,7 @@ const ContactForm = () => {
           <Title className="text-white">Mensagem</Title>
         </label>
         <textarea
-          className="h-32 p-3 rounded"
+          className="h-32 p-3 rounded w-full"
           id="message"
           placeholder="Escreva sua mensagem aqui"
         ></textarea>

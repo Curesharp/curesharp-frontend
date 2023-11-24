@@ -56,13 +56,15 @@ const Boarding = () => {
         <div className="flex flex-col gap-8">
           <Section
             header={
-              !isPatientsLoading && (
-                <div className="max-w-[300px]">
+              patients.length > 0 && (
+                <div className="max-w-[300px] mb-4">
                   <Button
                     onClick={() =>
                       setModal({
                         title: 'Adicionar paciente',
-                        content: <CreatePatientModal />,
+                        content: (
+                          <CreatePatientModal fetchPatients={fetchPatients} />
+                        ),
                       })
                     }
                     icon={HiPlus}
@@ -83,7 +85,7 @@ const Boarding = () => {
             {isPatientsLoading ? (
               <LoadingDots variant="primary" />
             ) : (
-              <div className="mt-8 flex flex-col gap-8">
+              <div className="flex flex-col gap-4">
                 {!patients.length && (
                   <>
                     <Text>Você poderá ver todos os seus pacientes aqui.</Text>
@@ -93,7 +95,11 @@ const Boarding = () => {
                         onClick={() =>
                           setModal({
                             title: 'Adicionar paciente',
-                            content: <CreatePatientModal />,
+                            content: (
+                              <CreatePatientModal
+                                fetchPatients={fetchPatients}
+                              />
+                            ),
                           })
                         }
                         icon={HiPlus}
@@ -104,7 +110,9 @@ const Boarding = () => {
                   </>
                 )}
 
-                <PatientsList patients={patients} />
+                {patients.length > 0 && (
+                  <PatientsList setPatients={setPatients} patients={patients} />
+                )}
               </div>
             )}
           </Section>

@@ -1,10 +1,10 @@
 export const genderMenu = [
   {
     label: 'Masculino',
-    id: 'masculino',
+    id: 'MASCULINO',
   },
   {
     label: 'Feminino',
-    id: 'feminino',
+    id: 'FEMININO',
   },
 ]

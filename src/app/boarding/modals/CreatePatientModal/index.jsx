@@ -6,8 +6,9 @@ import useUser from '@/stores/user'
 import { useState } from 'react'
 import { raceMenu } from './data/menuData'
 import useModal from '@/stores/modal'
+import { AxiosError } from 'axios'
 
-const CreatePatientModal = () => {
+const CreatePatientModal = ({ fetchPatients }) => {
   const { user } = useUser()
   const { setModal } = useModal()
 
@@ -16,7 +17,7 @@ const CreatePatientModal = () => {
     sobrenome: '',
     rg: '',
     contato: Number(''),
-    raca: '',
+    raca: 'BRANCA',
   })
 
   const handleCreatePatient = () => {
@@ -28,9 +29,21 @@ const CreatePatientModal = () => {
       raca: patientFormData.raca.toUpperCase(),
     }
 
-    api.post('/gestante', formData).then(() => {
-      setModal(undefined)
-    })
+    api
+      .post('/gestante', formData)
+      .then(() => {
+        setModal(undefined)
+        fetchPatients()
+      })
+      .then((error) => {
+        if (error instanceof AxiosError) {
+          if (error.response.status === 400) {
+            toast.error('Existem campos inválidos')
+          } else {
+            toast.error('Algo deu errado, tente novamente mais tarde!')
+          }
+        }
+      })
   }
 
   const handleInputChange = (e) => {

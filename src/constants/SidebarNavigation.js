@@ -1,8 +1,10 @@
 export const SidebarNavigation = [
   {
-    label: 'Dados da gravidez',
+    label: 'Análise da gestante',
+    section: 'pregnance',
   },
   {
-    label: 'Dados do feto',
+    label: 'Análise do feto',
+    section: 'fetus',
   },
 ]

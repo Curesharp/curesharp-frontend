@@ -1,22 +1,22 @@
 export const raceMenu = [
   {
     label: 'Branco',
-    id: 'branca',
+    id: 'BRANCA',
   },
   {
     label: 'Pardo',
-    id: 'parda',
+    id: 'PARDA',
   },
   {
     label: 'Afrodescendente',
-    id: 'negra',
+    id: 'NEGRA',
   },
   {
     label: 'Indígena',
-    id: 'indigena',
+    id: 'INDIGENA',
   },
   {
     label: 'Amarelo',
-    id: 'amarela',
+    id: 'AMARELA',
   },
 ]

@@ -10,11 +10,13 @@ import Pregnance from './sections/Pregnance'
 import Title from '@/components/ui/Title'
 import { HiArrowLeft } from 'react-icons/hi'
 import Fetus from './sections/Fetus'
+import { AxiosError } from 'axios'
+import { toast } from 'react-toastify'
 
 const Analysis = () => {
   const searchParams = useSearchParams()
   const { setPregnance } = usePregnance()
-  const { analysisStep, setAnalyisStep } = useAnalysis()
+  const { analysisStep } = useAnalysis()
   const router = useRouter()
 
   const patientId = searchParams.get('id')
@@ -30,7 +32,7 @@ const Analysis = () => {
 
         setIsScreenLoading(false)
       })
-      .catch(async () => {
+      .catch(async (error) => {
         await router.replace('/')
 
         setIsScreenLoading(false)
@@ -58,10 +60,10 @@ const Analysis = () => {
   const getSectionTitle = () => {
     switch (analysisStep) {
       case 'pregnance':
-        return 'Dados da gravidez'
+        return 'Análise da gestante'
         break
       case 'fetus':
-        return 'Dados do feto'
+        return 'Análise do feto'
         break
     }
   }
@@ -73,7 +75,10 @@ const Analysis = () => {
       ) : (
         <div className="p-10 w-full max-w-[1000px]">
           <header className="flex gap-4 items-center">
-            <div className="transition-all active:scale-[.96] cursor-pointer flex text-primary rounded-full hover:bg-primary-50/10 justify-center items-center p-2">
+            <div
+              onClick={() => router.replace('/boarding')}
+              className="transition-all active:scale-[.96] cursor-pointer flex text-primary rounded-full hover:bg-primary-50/10 justify-center items-center p-2"
+            >
               <HiArrowLeft size={24} />
             </div>
             <Title className="text-3xl">{getSectionTitle()}</Title>

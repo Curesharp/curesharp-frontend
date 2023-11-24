@@ -1,9 +1,7 @@
 import create from 'zustand'
 
-export const pregnanceInitialData = null
-
 const usePregnance = create((set) => ({
-  pregnance: pregnanceInitialData,
+  pregnance: null,
   setPregnance: (pregnance) => set({ pregnance }),
 }))
 

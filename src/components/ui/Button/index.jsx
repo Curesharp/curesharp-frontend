@@ -1,7 +1,7 @@
-import React from "react";
-import { twMerge } from "tailwind-merge";
-import { getVariant } from "./variants";
-import { CgSpinner } from "react-icons/cg";
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
+import { getVariant } from './variants'
+import { CgSpinner } from 'react-icons/cg'
 
 const Button = ({
   children,
@@ -12,7 +12,7 @@ const Button = ({
   icon: Icon,
   ...props
 }) => {
-  const variantStyles = getVariant(variant);
+  const variantStyles = getVariant(variant)
 
   return (
     <button
@@ -20,9 +20,9 @@ const Button = ({
       disabled={disabled || isLoading}
       className={twMerge(
         `group font-raleway outline-none w-full transition-all active:scale-[0.96] ${variantStyles} ${
-          Icon ? "pl-4 pr-3 justify-between" : "px-8 justify-center"
-        } disabled:bg-neutral-300 disabled:text-neutral-600 py-2 rounded flex  items-center gap-3`,
-        className
+          Icon ? 'pl-4 pr-3 justify-between' : 'px-8 justify-center'
+        } whitespace-nowrap disabled:bg-neutral-300 disabled:text-neutral-600 py-2 rounded flex  items-center gap-3`,
+        className,
       )}
     >
       {children}
@@ -31,7 +31,7 @@ const Button = ({
 
       {isLoading && <CgSpinner className="animate-spin" size={20} />}
     </button>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button
