@@ -1,7 +1,7 @@
-import React from 'react'
-import Input from '@/components/ui/Input'
-import Button from '@/components/ui/Button'
-import Title from '@/components/ui/Title'
+import React from "react";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
+import Title from "@/components/ui/Title";
 
 const ContactForm = () => {
   return (
@@ -29,7 +29,7 @@ const ContactForm = () => {
           <Title className="text-white">Mensagem</Title>
         </label>
         <textarea
-          className="h-32 p-3 rounded"
+          className="h-36 p-3 rounded w-full"
           id="message"
           placeholder="Escreva sua mensagem aqui"
         ></textarea>
@@ -39,7 +39,7 @@ const ContactForm = () => {
         Enviar
       </Button>
     </form>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;
