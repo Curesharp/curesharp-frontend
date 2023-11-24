@@ -54,7 +54,6 @@ const Hero = () => {
       </Container>
 
       <Card />
-      <Partners />
     </section>
   );
 };
