@@ -7,10 +7,10 @@ const PartnersWrapper = () => {
       <div className="w-[2000px] mr-10">
         <PartnersBrand />
       </div>
-      <div className="mr-10">
+      <div className="mr-10 ">
         <PartnersBrand variant="oracle" />
       </div>
-      <div className="">
+      <div>
         <PartnersBrand variant="notredame" />
       </div>
     </div>
