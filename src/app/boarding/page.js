@@ -1,46 +1,46 @@
-"use client";
+'use client'
 
-import Container from "@/components/layout/Container";
-import Divider from "@/components/layout/Divider";
-import React, { useEffect, useState } from "react";
-import Section from "./components/Section";
-import Title from "@/components/ui/Title";
-import Text from "@/components/ui/Text";
-import Button from "@/components/ui/Button";
-import EmptySection from "./components/EmptySection";
-import Card from "@/components/shared/Card";
-import useUser from "@/stores/user";
-import HiPlus from "react-icons/hi";
-import useModal from "@/stores/modal";
-import CreatePatientModal from "./modals/CreatePatientModal";
-import { api } from "@/lib/api";
-import PatientsList from "./components/PatientsList";
-import LoadingDots from "@/components/shared/LoadingDots";
+import Container from '@/components/layout/Container'
+import Divider from '@/components/layout/Divider'
+import React, { useEffect, useState } from 'react'
+import Section from './components/Section'
+import Title from '@/components/ui/Title'
+import Text from '@/components/ui/Text'
+import Button from '@/components/ui/Button'
+import EmptySection from './components/EmptySection'
+import Card from '@/components/shared/Card'
+import useUser from '@/stores/user'
+import HiPlus from 'react-icons/hi'
+import useModal from '@/stores/modal'
+import CreatePatientModal from './modals/CreatePatientModal'
+import { api } from '@/lib/api'
+import PatientsList from './components/PatientsList'
+import LoadingDots from '@/components/shared/LoadingDots'
 
 const Boarding = () => {
-  const { user } = useUser();
-  const { setModal } = useModal();
+  const { user } = useUser()
+  const { setModal } = useModal()
 
-  const [patients, setPatients] = useState([]);
+  const [patients, setPatients] = useState([])
 
   // patients loading state
-  const [isPatientsLoading, setIsPatientsLoading] = useState(true);
+  const [isPatientsLoading, setIsPatientsLoading] = useState(true)
 
   const fetchPatients = () => {
-    setIsPatientsLoading(true);
+    setIsPatientsLoading(true)
 
     api.get(`/gestante`).then((response) => {
-      setPatients(response.data);
+      setPatients(response.data)
 
-      setIsPatientsLoading(false);
-    });
-  };
+      setIsPatientsLoading(false)
+    })
+  }
 
   useEffect(() => {
-    fetchPatients();
+    fetchPatients()
 
-    console.log(patients);
-  }, []);
+    console.log(patients)
+  }, [])
 
   return (
     <main className="bg-neutral-100 min-h-screen pb-[200px]">
@@ -48,9 +48,9 @@ const Boarding = () => {
         <div className="absolute -bottom-[260px] -right-[200px] h-[600px] w-[600px] bg-primary opacity-60 blur-3xl rounded-full" />
       </Divider>
 
-      <Container className="relative pt-[80px] z-20">
+      <Container className="relative pt-[80px] z-10">
         <Title className="text-4xl text-white mb-10">
-          Olá, {user?.nome?.split(" ")[0]}.
+          Olá, {user?.nome?.split(' ')[0]}.
         </Title>
 
         <div className="flex flex-col gap-8">
@@ -61,7 +61,7 @@ const Boarding = () => {
                   <Button
                     onClick={() =>
                       setModal({
-                        title: "Adicionar paciente",
+                        title: 'Adicionar paciente',
                         content: (
                           <CreatePatientModal fetchPatients={fetchPatients} />
                         ),
@@ -76,10 +76,10 @@ const Boarding = () => {
             }
             title={
               isPatientsLoading
-                ? ""
+                ? ''
                 : patients.length > 0
-                ? "Pacientes"
-                : "Você ainda não tem nenhum paciente"
+                ? 'Pacientes'
+                : 'Você ainda não tem nenhum paciente'
             }
           >
             {isPatientsLoading ? (
@@ -94,7 +94,7 @@ const Boarding = () => {
                       <Button
                         onClick={() =>
                           setModal({
-                            title: "Adicionar paciente",
+                            title: 'Adicionar paciente',
                             content: (
                               <CreatePatientModal
                                 fetchPatients={fetchPatients}
@@ -139,7 +139,7 @@ const Boarding = () => {
         </div>
       </Container>
     </main>
-  );
-};
+  )
+}
 
-export default Boarding;
+export default Boarding

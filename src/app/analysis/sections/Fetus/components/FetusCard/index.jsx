@@ -4,9 +4,22 @@ import useModal from '@/stores/modal'
 import React from 'react'
 import { IoFemale, IoMale } from 'react-icons/io5'
 import FetusModal from '../../modals/FetusModal'
+import { api } from '@/lib/api'
+import { toast } from 'react-toastify'
 
 const FetusCard = ({ fetus, fetchFetusData }) => {
   const { setModal } = useModal()
+
+  const handleDeleteFetus = (id) => {
+    api
+      .delete(`/feto/${id}`)
+      .then(() => {
+        fetchFetusData()
+      })
+      .catch(() => {
+        toast.error('Algo deu errado, tente novamente mais tarde!')
+      })
+  }
 
   return (
     <div className="p-2 rounded border flex gap-4">
@@ -32,7 +45,7 @@ const FetusCard = ({ fetus, fetchFetusData }) => {
             {fetus.idade} semanas
           </div>
         </div>
-        <div>
+        <div className="flex gap-3">
           <Button
             onClick={() =>
               setModal({
@@ -49,6 +62,12 @@ const FetusCard = ({ fetus, fetchFetusData }) => {
             variant="neutral"
           >
             Editar
+          </Button>
+          <Button
+            onClick={() => handleDeleteFetus(fetus.idFeto)}
+            variant="neutral-danger"
+          >
+            Excluir
           </Button>
         </div>
       </div>

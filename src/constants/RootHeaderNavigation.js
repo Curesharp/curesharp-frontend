@@ -7,10 +7,4 @@ export const RootHeaderNavigation = [
     label: 'Profissionais da saúde',
     href: '/professional',
   },
-  {
-    label: 'Gestantes',
-    href: '/pregnant',
-  },
 ]
-
-
