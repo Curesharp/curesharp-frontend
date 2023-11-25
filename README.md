@@ -4,14 +4,16 @@ Entregável de Responsive Web Development da Global Solution 2023
 
 <hr>
 
-<h2>Informações do projeto.</h2>
+## Informações do projeto.
 - Repositório no GitHub: https://github.com/Curesharp/curesharp-frontend
-<br><br>- Integrantes:<br><br> 
-    •	Bruno Francisco Brito de Paula (RM 552226 – 1TDSPW);<br>
-    •	Felipe de Almeida Cardoso (RM 552489 – 1TDSPK);<br>
-    •	Gabriel Barroso de Assis França (RM 551905 – 1TDSPW);<br>
-    •	Gabriel Francisco Lobo (RM 99708 – 1TDSPF);<br>
-    •	Kayque Lima Nunes (RM 550782 – 1TDSPW).
+- Vídeo de demonstração da aplicação web: [Cure Sharp - Vídeo de demonstração da aplicação web
+](https://www.youtube.com/watch?v=3VoSh-WOgeA)
+- Integrantes:
+    - Bruno Francisco Brito de Paula (RM 552226 – 1TDSPW);
+    - Felipe de Almeida Cardoso (RM 552489 – 1TDSPK);
+    - Gabriel Barroso de Assis França (RM 551905 – 1TDSPW);
+    - Gabriel Francisco Lobo (RM 99708 – 1TDSPF);<br>
+    - Kayque Lima Nunes (RM 550782 – 1TDSPW).
 
 <h2>Antes de rodar a aplicação web, é importante rodar os servidores para o funcionamento correto.</h2>
 
